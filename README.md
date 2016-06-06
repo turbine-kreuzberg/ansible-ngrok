@@ -1,22 +1,55 @@
-Role Name
-=========
+ngrok
+=====
 
-A brief description of the role goes here.
+This role will download and install ngrok binary and add a custom tunnel configuration. 
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+None
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+| Name                     | Default                                                            | Description                                                                 |
+|:-------------------------|:-------------------------------------------------------------------|:----------------------------------------------------------------------------|
+| ngrok_download           | https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip  |                                                                             |
+| ngrok_path_download_tmp  | /tmp                                                               |                                                                             |
+| ngrok_path_install       | /opt/ngrok                                                         |                                                                             |
+| ngrok_path_bin           | /usr/bin/ngrok                                                     |                                                                             |
+| ngrok_path_init          | /etc/init.d                                                        |                                                                             |
+| ngrok_auth_token         |                                                                    | required, to be set in vars/playbook                                        |
+| ngrok_console_ui         | false                                                              |                                                                             |
+| ngrok_region             | eu                                                                 |                                                                             |
+| ngrok_tunnels            | []                                                                 |                                                                             |
+| ngrok_user               |                                                                    | optional, default if not set: ansible_ssh_user                              |
+| ngrok_start_tunnel       | --all                                                              | tunnel to run in service (optional), by default all tunnels will be started |
+| ngrok_install_as_service | false                                                              | creates init script                                                         |
+| ngrok_service_name       | ngrok                                                              |                                                                             |
+| ngrok_daemon             | {{ ngrok_path_bin }}                                               |                                                                             |
+| ngrok_daemon_opts        | start {{ ngrok_start_tunnel }} --config /home/{{ ngrok_user }}/.ngrok2/ngrok.yml |                                                               |
+| ngrok_pidfile            | /var/run/ngrok.pid                                                 |                                                                             |
+
+**Example for a tunnel configuration:**
+
+```
+ngrok_tunnels
+  - name:       "custom-name-for-tunnel"
+    hostname:   "my-custom-host.ngrok.io"    # optional
+    subdomain:  "my-custom-subdomain"        # subdomain for ngrok.io (optional), only used if hostname is not defined.
+                                             # if subdomain is also not defined, ngrok uses tunnel name as subdomain
+    address:    "my.local.address:80"
+    proto:      "http"                       # optional, default: http
+    bind_tls:   both                         # optional, default: both (false: only http, true: only https, both: http & https)
+    auth:
+      username: "ngrokuser"
+      password: "secretpassword"
+```
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+None
 
 Example Playbook
 ----------------
@@ -25,7 +58,7 @@ Including an example of how to use your role (for instance, with variables passe
 
     - hosts: servers
       roles:
-         - { role: username.rolename, x: 42 }
+         - { role: votum.ngrok }
 
 License
 -------
@@ -35,4 +68,4 @@ BSD
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+[Bernd Alter](https://github.com/bazoo0815) [VOTUM GmbH](https://votum.de)
