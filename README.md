@@ -18,7 +18,7 @@ Role Variables
 | ngrok_path_install       | /opt/ngrok                                                         |                                                                             |
 | ngrok_path_bin           | /usr/bin/ngrok                                                     |                                                                             |
 | ngrok_path_init          | /etc/init.d                                                        |                                                                             |
-| ngrok_auth_token         |                                                                    | required, to be set in vars/playbook                                        |
+| ngrok_auth_token         |                                                                    | **required**, to be set in playbook vars                                    |
 | ngrok_console_ui         | false                                                              |                                                                             |
 | ngrok_region             | eu                                                                 |                                                                             |
 | ngrok_tunnels            | []                                                                 |                                                                             |
@@ -33,7 +33,7 @@ Role Variables
 **Example for a tunnel configuration:**
 
 ```
-ngrok_tunnels
+ngrok_tunnels:
   - name:       "custom-name-for-tunnel"
     hostname:   "my-custom-host.ngrok.io"    # optional
     subdomain:  "my-custom-subdomain"        # subdomain for ngrok.io (optional), only used if hostname is not defined.
@@ -58,7 +58,7 @@ Including an example of how to use your role (for instance, with variables passe
 
     - hosts: servers
       roles:
-         - { role: votum.ngrok }
+         - { role: "votum.ngrok" }
 
 License
 -------
@@ -68,4 +68,4 @@ BSD
 Author Information
 ------------------
 
-[Bernd Alter](https://github.com/bazoo0815) [VOTUM GmbH](https://votum.de)
+[Bernd Alter](https://github.com/bazoo0815) / [VOTUM GmbH](https://votum.de)
