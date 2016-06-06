@@ -1,0 +1,23 @@
+---
+- name: ngrok | set user
+  set_fact:
+    ngrok_user: "{{ ansible_ssh_user }}"
+  when: ngrok_user is not defined
+
+- name: ngrok | install required packages
+  package:
+    name: unzip
+    state: present
+
+- name: ngrok | check for existing ngrok binary
+  stat: "path={{ ngrok_path_bin }}"
+  register: ngrok_bin
+
+- include: install.yml
+  when: not ngrok_bin.stat.exists
+
+- include: configure-tunnels.yml
+  when: ngrok_tunnels | length > 0
+
+- include: service.yml
+  when: ngrok_install_as_service and ngrok_tunnels | length > 0
