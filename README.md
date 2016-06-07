@@ -63,7 +63,7 @@ Including an example of how to use your role (for instance, with variables passe
 License
 -------
 
-BSD
+This project is under the MIT License. See the [LICENSE](LICENSE) file for the full license text.
 
 Author Information
 ------------------
