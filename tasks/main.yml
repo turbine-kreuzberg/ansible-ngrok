@@ -20,4 +20,4 @@
   when: ngrok_tunnels | length > 0
 
 - include: service.yml
-  when: ngrok_install_as_service and ngrok_tunnels | length > 0
+  #when: ngrok_install_as_service and ngrok_tunnels | length > 0

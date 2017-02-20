@@ -5,6 +5,7 @@
     path: "/home/{{ ngrok_user }}/.ngrok2"
     owner: "{{ ngrok_user }}"
     state: directory
+  ignore_errors: yes
 
 - name: ngrok | add tunnel configuration file
   become_user: "{{ ngrok_user }}"
@@ -13,3 +14,4 @@
     dest: "/home/{{ ngrok_user }}/.ngrok2/ngrok.yml"
     owner: "{{ ngrok_user }}"
     force: no
+  ignore_errors: yes

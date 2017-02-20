@@ -11,3 +11,4 @@
     name: "{{ ngrok_service_name }}"
     state: started
     enabled: yes
+  ignore_errors: yes
