@@ -1,5 +1,6 @@
-ngrok
+ansible role for ngrok
 =====
+[![Build Status](https://travis-ci.org/votum/ansible-ngrok.svg?branch=master)](https://travis-ci.org/votum/ansible-ngrok)
 
 This role will download and install ngrok binary and add a custom tunnel configuration. 
 

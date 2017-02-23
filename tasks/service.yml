@@ -10,7 +10,7 @@
   template:
     src: "ngrok.service.j2"
     dest: "{{ ngrok_path_systemd }}/{{ ngrok_service_name }}.service"
-    mode: 0755
+    mode: 0644
     force: no
 
 - name: ngrok | install and start service
