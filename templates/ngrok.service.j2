@@ -9,7 +9,7 @@ Restart=always
 RestartSec=1min
 StandardOutput=null
 StandardError=null
-ExecStart=/usr/bin/ngrok start --config /home/vagrant/.ngrok2/ngrok.service.yml --all &
+ExecStart=/usr/bin/ngrok start --config /home/vagrant/.ngrok2/ngrok.service.yml --all
 ExecStop=/usr/bin/killall ngrok
 
 [Install]

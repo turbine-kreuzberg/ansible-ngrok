@@ -18,6 +18,7 @@ Role Variables
 | ngrok_path_install       | /opt/ngrok                                                         |                                                                             |
 | ngrok_path_bin           | /usr/bin/ngrok                                                     |                                                                             |
 | ngrok_path_init          | /etc/init.d                                                        |                                                                             |
+| ngrok_path_systemd       | /lib/systemd/system                                                |                                                                             |
 | ngrok_auth_token         |                                                                    | **required**, to be set in playbook vars                                    |
 | ngrok_console_ui         | false                                                              |                                                                             |
 | ngrok_region             | eu                                                                 |                                                                             |

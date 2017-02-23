@@ -9,7 +9,7 @@
 - name: ngrok | create systemd script
   template:
     src: "ngrok.service.j2"
-    dest: "{{ ngrok_path_systemd }}/{{ ngrok_service_name }}"
+    dest: "{{ ngrok_path_systemd }}/{{ ngrok_service_name }}.service"
     mode: 0755
     force: no
 
