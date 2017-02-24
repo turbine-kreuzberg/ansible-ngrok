@@ -17,5 +17,5 @@
   service:
     name: "{{ ngrok_service_name }}.service"
     state: stopped
-    enabled: yes
-  ignore_errors: yes
+    enabled: no
+#  ignore_errors: yes

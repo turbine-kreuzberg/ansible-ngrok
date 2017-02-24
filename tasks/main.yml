@@ -16,8 +16,8 @@
 - include: install.yml
   when: not ngrok_bin.stat.exists
 
-- include: configure-tunnels.yml
-  when: ngrok_tunnels | length > 0
+#- include: configure-tunnels.yml
+#  when: ngrok_tunnels | length > 0
 
 - include: service.yml
   #when: ngrok_install_as_service and ngrok_tunnels | length > 0
