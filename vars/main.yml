@@ -1,4 +1,4 @@
 ---
 # vars file for ansible-ngrok
 # ngrok auth-token
-ngrok_auth_token: "5BRUd38Rh9jtL7hxG7Juo_5cqgALZLngdgfJqant7ao"
+ngrok_auth_token: "XX"
